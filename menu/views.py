@@ -58,12 +58,11 @@ class DishDetailView(LoginRequiredMixin, generic.DetailView):
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     paginate_by = 5
-    context_object_name = "cook_list"
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
-    queryset = Cook.objects.prefetch_related("dishes__cooks")
+    queryset = Cook.objects.prefetch_related("dishes")
 
 
 class UserCreateView(generic.CreateView):
